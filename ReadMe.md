@@ -2,7 +2,46 @@
 
 Ce dépôt contient le code source du projet Taajr. Ce guide vous aidera à démarrer avec le projet et à contribuer efficacement.
 
-## Prérequis
+## Déploiement sur Vercel
+
+Ce projet peut être déployé sur Vercel pour un hébergement gratuit et facile. Suivez ces étapes :
+
+### Prérequis pour le déploiement
+- Un compte Vercel (gratuit) : [https://vercel.com/signup](https://vercel.com/signup)
+- Git et GitHub
+
+### Étapes de déploiement
+
+1. **Connectez votre compte GitHub à Vercel :**
+   - Allez sur [https://vercel.com](https://vercel.com)
+   - Cliquez sur "Sign Up" ou "Login"
+   - Connectez-vous avec votre compte GitHub
+
+2. **Importez votre projet :**
+   - Dans le dashboard Vercel, cliquez sur "Add New..." puis "Project"
+   - Sélectionnez votre dépôt GitHub `Taajr`
+   - Vercel détectera automatiquement la configuration grâce au fichier `vercel.json`
+
+3. **Configurez les variables d'environnement (si nécessaire) :**
+   - Dans les paramètres du projet, ajoutez les variables d'environnement sensibles
+   - Par exemple : `MAIL_PASSWORD`, `SECRET_KEY`, etc.
+
+4. **Déployez :**
+   - Cliquez sur "Deploy"
+   - Vercel construira et déploiera automatiquement votre application
+   - Une fois terminé, vous recevrez une URL de production (ex: `https://taajr.vercel.app`)
+
+5. **Déploiements automatiques :**
+   - Chaque push sur la branche principale déclenchera un nouveau déploiement automatiquement
+   - Les pull requests créeront des prévisualisations de déploiement
+
+### Notes importantes pour Vercel
+
+- **Base de données SQLite** : Sur Vercel, le système de fichiers est éphémère. Pour la production, considérez l'utilisation d'une base de données PostgreSQL ou MySQL hébergée (ex: Vercel Postgres, PlanetScale, Supabase).
+- **Fichiers uploadés** : Les fichiers uploadés ne persisteront pas entre les déploiements. Utilisez un service de stockage cloud comme AWS S3, Cloudinary, ou Vercel Blob.
+- **Flask-Session** : La session basée sur le système de fichiers ne fonctionnera pas sur Vercel. Utilisez une session basée sur les cookies ou Redis.
+
+## Prérequis pour le développement local
 
 - **Git** (assurez-vous que Git est installé sur votre système Windows. Vous pouvez le télécharger depuis [Git pour Windows](https://git-scm.com/download/win))
 - **Visual Studio Code** ou un autre éditeur de code
