@@ -22,9 +22,12 @@ Ce projet peut être déployé sur Vercel pour un hébergement gratuit et facile
    - Sélectionnez votre dépôt GitHub `Taajr`
    - Vercel détectera automatiquement la configuration grâce au fichier `vercel.json`
 
-3. **Configurez les variables d'environnement (si nécessaire) :**
-   - Dans les paramètres du projet, ajoutez les variables d'environnement sensibles
-   - Par exemple : `MAIL_PASSWORD`, `SECRET_KEY`, etc.
+3. **Configurez les variables d'environnement :**
+   - Dans les paramètres du projet Vercel, allez dans "Settings" > "Environment Variables"
+   - Ajoutez les variables suivantes :
+     - `SECRET_KEY` : Une clé secrète aléatoire pour les sessions Flask (générez-en une sécurisée)
+     - `MAIL_PASSWORD` : Votre mot de passe d'application Gmail (si vous souhaitez utiliser l'email)
+   - Les autres configurations email sont déjà dans le code, mais peuvent être overridées si nécessaire
 
 4. **Déployez :**
    - Cliquez sur "Deploy"

@@ -16,10 +16,15 @@ import random
 
 app = Flask(__name__)
 
+# Set secret key for session management
+# In production, use environment variable: os.environ.get('SECRET_KEY', 'dev-secret-key')
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
+
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///base.db")
 
-# Configure session to use filesystem (instead of signed cookies)
+# Configure session to use signed cookies (compatible with Vercel serverless)
+# For filesystem sessions, use Redis or a database-backed session store
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
