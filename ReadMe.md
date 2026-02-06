@@ -25,7 +25,10 @@ Ce projet peut être déployé sur Vercel pour un hébergement gratuit et facile
 3. **Configurez les variables d'environnement :**
    - Dans les paramètres du projet Vercel, allez dans "Settings" > "Environment Variables"
    - Ajoutez les variables suivantes :
-     - `SECRET_KEY` : Une clé secrète aléatoire pour les sessions Flask (générez-en une sécurisée)
+     - `SECRET_KEY` : Une clé secrète aléatoire pour les sessions Flask. Pour générer une clé sécurisée, utilisez :
+       ```python
+       python3 -c "import secrets; print(secrets.token_hex(32))"
+       ```
      - `MAIL_PASSWORD` : Votre mot de passe d'application Gmail (si vous souhaitez utiliser l'email)
    - Les autres configurations email sont déjà dans le code, mais peuvent être overridées si nécessaire
 
@@ -42,7 +45,7 @@ Ce projet peut être déployé sur Vercel pour un hébergement gratuit et facile
 
 - **Base de données SQLite** : Sur Vercel, le système de fichiers est éphémère. Pour la production, considérez l'utilisation d'une base de données PostgreSQL ou MySQL hébergée (ex: Vercel Postgres, PlanetScale, Supabase).
 - **Fichiers uploadés** : Les fichiers uploadés ne persisteront pas entre les déploiements. Utilisez un service de stockage cloud comme AWS S3, Cloudinary, ou Vercel Blob.
-- **Flask-Session** : La session basée sur le système de fichiers ne fonctionnera pas sur Vercel. Utilisez une session basée sur les cookies ou Redis.
+- **Sessions** : L'application utilise maintenant des sessions basées sur des cookies signés (compatibles avec Vercel). Si vous avez besoin de sessions plus robustes pour la production, considérez l'utilisation de Redis ou d'un stockage de sessions basé sur une base de données.
 
 ## Prérequis pour le développement local
 

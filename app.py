@@ -6,7 +6,8 @@ import os
 from werkzeug.utils import secure_filename
 # from flask_login import login_user, current_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_session import Session
+# Commented out Flask-Session for Vercel compatibility - using default Flask cookie sessions
+# from flask_session import Session
 import re
 from functools import wraps
 import smtplib
@@ -23,11 +24,11 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key-change-i
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///base.db")
 
-# Configure session to use signed cookies (compatible with Vercel serverless)
-# For filesystem sessions, use Redis or a database-backed session store
+# Using Flask's default signed cookie sessions (compatible with Vercel serverless)
+# For production with Redis/database sessions, uncomment Flask-Session and configure accordingly
 app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
+# app.config["SESSION_TYPE"] = "filesystem"  # Use this for local development if needed
+# Session(app)
 
 # Configuration for file uploads
 UPLOAD_FOLDER_OFFRES = 'static/Images/Offres/'
